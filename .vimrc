@@ -215,6 +215,9 @@ nnoremap <Leader>c :set cursorline! <CR>
 " Clean file
 map <leader>C :%s/\s\+$// <CR>
 
+" leave insert mode by pressing jj
+imap jj <Esc>
+
 augroup testgroup
 " Clears autogroup if there is another testgroup
 autocmd!
