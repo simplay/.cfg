@@ -15,3 +15,7 @@ if [ $? = 0 ]; then
 fi;
 config checkout
 config config status.showUntrackedFiles no
+
+mkdir .vim
+mkdir .vim/colors
+cp ./.cgf_resources/dracula.vim .vim/colors/
