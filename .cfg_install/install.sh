@@ -18,4 +18,7 @@ config config status.showUntrackedFiles no
 
 mkdir .vim
 mkdir .vim/colors
+mkdir .vim/autoload
 cp .cfg_resources/dracula.vim .vim/colors/
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
