@@ -1,4 +1,7 @@
-git clone --bare https://github.com/simplay/.cfg.git $HOME/.cfg
+if [ ! -d ".cfg" ]; then
+   git clone --bare https://github.com/simplay/.cfg.git $HOME/.cfg
+fi
+
 function config {
    /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
 }
