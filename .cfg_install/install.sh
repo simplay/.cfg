@@ -31,3 +31,4 @@ if [ "$1" = -m ]; then
     cp .config-backup/.bash_aliases ~/
     cp .config-backup/.zshrc ~/
 fi
+vim -c PlugInstall -c q! -c q!
