@@ -22,3 +22,12 @@ mkdir .vim/autoload
 cp .cfg_resources/dracula.vim .vim/colors/
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# minimal (`-m`) installation: only fetch vimrc and tmux.conf
+# TODO: blacklist explicitly what should not be restored and restore everything else in .config-backup
+if [ "$1" = -m ]; then
+    cp .config-backup/.bashrc ~/
+    cp .config-backup/.bash_profile ~/
+    cp .config-backup/.bash_aliases ~/
+    cp .config-backup/.zshrc ~/
+fi
