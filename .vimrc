@@ -7,6 +7,9 @@
 " surround selection by pattern
 "   :s/.*/"&" will surround visual selection by \" \"
 " Within a rails app, use gf to lookup file
+" Surround <V>S<PATTERN> 
+" alternative: ciw<PATTERN><ESC>P
+" find all occurrances of word at cursor position: * (*|#)
 
 set nocompatible
 filetype off
@@ -114,6 +117,16 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
+" pretty folding with indentations
+" folding using:
+"   toggle: zi
+"   fold current lvl: zc
+"   view current folding: zv
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
 " disable beep sounds
 set visualbell
 set noerrorbells
@@ -207,6 +220,9 @@ map <Leader>t :CtrlPBufTag<CR>
 map <Leader>T :CtrlPTag<CR>
 " " Search models
 map <Leader>m :Emodel<space>"
+
+" Change color of visual mode highlighting
+hi Visual   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
 
 " Enable pretty line highlighting via <LEADER-c>
 hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
