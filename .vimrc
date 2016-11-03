@@ -89,6 +89,9 @@ Plug 'tpope/vim-haml'
 " with spaces
 Plug 'Yggdroot/indentLine'
 
+" browse the tags of a file and get an overview of its structure
+Plug 'majutsushi/tagbar'
+
 call plug#end()
 
 syntax on
@@ -134,7 +137,15 @@ set noerrorbells
 set number
 set laststatus=2
 
-set clipboard=unnamed
+" Use system clipboard
+" is different for MacOSX and Ubuntu
+set clipboard=unnamedplus
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    set clipboard=unnamed
+  endif
+endif
 
 " show current line and col in status bar
 set ruler
@@ -167,6 +178,20 @@ set statusline+=%*
 " ignore files in control P
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+" ubuntu required setup to enable powerline
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set t_Co=256
+
+" powerline setup to have nice airline fonts
+set guifont=Inconsolata\ for\ Powerline:h15
+let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+let g:airline_powerline_fonts = 1
 
 " configure syntastic plugin
 let g:syntastic_always_populate_loc_list = 1
@@ -220,6 +245,9 @@ map <Leader>t :CtrlPBufTag<CR>
 map <Leader>T :CtrlPTag<CR>
 " " Search models
 map <Leader>m :Emodel<space>"
+
+" Toggle tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " Change color of visual mode highlighting
 hi Visual   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white

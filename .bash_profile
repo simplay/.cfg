@@ -6,3 +6,7 @@
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
+
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
