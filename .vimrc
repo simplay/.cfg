@@ -92,6 +92,14 @@ Plug 'Yggdroot/indentLine'
 " browse the tags of a file and get an overview of its structure
 Plug 'majutsushi/tagbar'
 
+" search and navigate Ruby library and gem documentation inside Vim
+" controlls: <Leader>r toggle horizontal search bar
+" requires a preliminarly run: `rvm docs generate-ri`
+Plug 'danchoi/ri.vim'
+
+" Write files into directories that do not exist yet (and create them)
+Plug 'DataWraith/auto_mkdir'
+
 call plug#end()
 
 syntax on
