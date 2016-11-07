@@ -10,6 +10,11 @@
 " Surround <V>S<PATTERN> 
 " alternative: ciw<PATTERN><ESC>P
 " find all occurrances of word at cursor position: * (*|#)
+"
+" Manipulate splits
+" <C-w> = Make splits evenly sized
+" <C-W> R swap left-right splits
+" <C-w> o close all but this split
 
 set nocompatible
 filetype off
@@ -99,6 +104,9 @@ Plug 'danchoi/ri.vim'
 
 " Write files into directories that do not exist yet (and create them)
 Plug 'DataWraith/auto_mkdir'
+
+" move lines and selections up and down
+Plug 'matze/vim-move'
 
 call plug#end()
 
@@ -199,6 +207,20 @@ set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
+
+" Open new split panes to right and bottom
+set splitbelow
+set splitright
+
+" Instead of failing a command because of unsaved changes, raise a
+" dialogue asking if you wish to save changed files.
+set confirm
+
+" Move visual selections: prefixed by ctrl
+" <C-k>   Move current line/selections up
+" <C-j>   Move current line/selections down
+let g:move_key_modifier = 'C'
+
 let g:airline_powerline_fonts = 1
 
 " configure syntastic plugin
@@ -269,6 +291,16 @@ map <leader>C :%s/\s\+$// <CR>
 
 " leave insert mode by pressing jj
 imap jj <Esc>
+
+" Adjust size of vertical splits.
+" To make windows again evenly sized, type `ctrl-w =`
+map <leader>l :vertical resize +5<CR>
+map <leader>h :vertical resize -5<CR>
+
+" Browse model, controller and view files
+map <Leader>8 :vs<CR>:Emodel. <CR>
+map <Leader>9 :vs<CR>:Econtroller. <CR>
+map <Leader>0 :vs<CR>:Eview. <CR>
 
 augroup testgroup
 " Clears autogroup if there is another testgroup
