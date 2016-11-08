@@ -57,6 +57,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.bin/tmuxinator.zsh
+source ~/.custom_shell_scripts/transfer.sh
 export EDITOR='vim'
 
 # You may need to manually set your language environment
