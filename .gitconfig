@@ -1,0 +1,8 @@
+[user]
+	name = simplay
+	email = silent.simplay@gmail.com
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore\n
+[merge]
+	tool = kdiff3
