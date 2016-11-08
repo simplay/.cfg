@@ -302,6 +302,10 @@ map <Leader>8 :vs<CR>:Emodel. <CR>
 map <Leader>9 :vs<CR>:Econtroller. <CR>
 map <Leader>0 :vs<CR>:Eview. <CR>
 
+" search for visually selected text:
+" select text block and then press //
+vnoremap // y/<C-R>"<CR>
+
 augroup testgroup
 " Clears autogroup if there is another testgroup
 autocmd!
