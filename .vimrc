@@ -263,10 +263,10 @@ let g:javascript_plugin_jsdoc = 1
 
 "MAPPINGS
 " toggle nerd tree
-map <C-n> :NERDTreeToggle<CR>
+noremap <C-n> :NERDTreeToggle<CR>
 
 " Open vimrc file
-map <Leader>H :e $MYVIMRC <CR>
+noremap <Leader>H :e $MYVIMRC <CR>
 
 " jump to tab on the right
 nnoremap <tab> <c-w>w
@@ -275,22 +275,22 @@ nnoremap <tab> <c-w>w
 nnoremap <S-tab> <c-w>W
 
 " toggle git blame
-map <Leader>b :Gblame <CR>
+noremap <Leader>b :Gblame <CR>
 
 " Search for word under cursor
 nnoremap K :Ag! "<C-R><C-W>"<CR>
 
 " Search buffer
-map <Leader>p :CtrlPBuffer<CR>
+noremap <Leader>p :CtrlPBuffer<CR>
 " " Browse Tags in current buffer
-map <Leader>t :CtrlPBufTag<CR>
+noremap <Leader>t :CtrlPBufTag<CR>
 " " Browse Tags
-map <Leader>T :CtrlPTag<CR>
+noremap <Leader>T :CtrlPTag<CR>
 " " Search models
-map <Leader>m :Emodel<space>"
+noremap <Leader>m :Emodel<space>"
 
 " Toggle tagbar
-nmap <F8> :TagbarToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
 
 " Change color of visual mode highlighting
 hi Visual   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
@@ -300,20 +300,20 @@ hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=wh
 nnoremap <Leader>c :set cursorline! <CR>
 
 " Clean file
-map <leader>C :%s/\s\+$// <CR>
+noremap <leader>C :%s/\s\+$// <CR>
 
 " leave insert mode by pressing jj
-imap jj <Esc>
+inoremap jj <Esc>
 
 " Adjust size of vertical splits.
 " To make windows again evenly sized, type `ctrl-w =`
-map <leader>l :vertical resize +5<CR>
-map <leader>h :vertical resize -5<CR>
+noremap <leader>l :vertical resize +5<CR>
+noremap <leader>h :vertical resize -5<CR>
 
 " Browse model, controller and view files
-map <Leader>8 :vs<CR>:Emodel. <CR>
-map <Leader>9 :vs<CR>:Econtroller. <CR>
-map <Leader>0 :vs<CR>:Eview. <CR>
+noremap <Leader>8 :vs<CR>:Emodel. <CR>
+noremap <Leader>9 :vs<CR>:Econtroller. <CR>
+noremap <Leader>0 :vs<CR>:Eview. <CR>
 
 " search for visually selected text:
 " select text block and then press //
