@@ -59,6 +59,7 @@ autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 source ~/.bin/tmuxinator.zsh
 source ~/.custom_shell_scripts/transfer.sh
+source ~/.custom_shell_scripts/tran.sh
 export EDITOR='vim'
 
 # You may need to manually set your language environment
@@ -85,6 +86,8 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+#
 alias gs="git status"
 alias open="nautilus"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
