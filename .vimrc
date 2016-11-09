@@ -108,6 +108,19 @@ Plug 'DataWraith/auto_mkdir'
 " move lines and selections up and down
 Plug 'matze/vim-move'
 
+" improved search , substitution, and abbreviations of words
+" Substitude (reminder)
+"   flags = [g,c,i,I]
+"   :s/a/b/   replace first occurance of a by b in current line
+"   :s/a/b/g  replace in current line every occurance of a by b
+"   :%s/a/b/  replace in every line the first a occurance by b
+"   :%s/a/b/g replace every a by b
+" Subvert
+"   :[range]S/target/replacement/[flags]
+"   facility -> building & facilities -> buildings
+"   :%S/facilit{y,ies}/building{,s}/gc
+Plug 'tpope/vim-abolish'
+
 call plug#end()
 
 syntax on
