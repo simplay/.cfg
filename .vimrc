@@ -15,6 +15,12 @@
 " <C-w> = Make splits evenly sized
 " <C-W> R swap left-right splits
 " <C-w> o close all but this split
+" handy leader commands:
+"   A, S, s, K
+" handy control commands:
+" e,y F,B
+" handy general movements
+" #, %
 
 set nocompatible
 filetype off
