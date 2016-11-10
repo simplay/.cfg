@@ -121,6 +121,23 @@ Plug 'matze/vim-move'
 "   :%S/facilit{y,ies}/building{,s}/gc
 Plug 'tpope/vim-abolish'
 
+" Ruby refactoring tool
+" Default Mappings
+"   :nnoremap <leader>rap  :RAddParameter<cr>
+"   :nnoremap <leader>rcpc :RConvertPostConditional<cr>
+"   :nnoremap <leader>rel  :RExtractLet<cr>
+"   :vnoremap <leader>rec  :RExtractConstant<cr>
+"   :vnoremap <leader>relv :RExtractLocalVariable<cr>
+"   :nnoremap <leader>rit  :RInlineTemp<cr>
+"   :vnoremap <leader>rrlv :RRenameLocalVariable<cr>
+"   :vnoremap <leader>rriv :RRenameInstanceVariable<cr>
+"   :vnoremap <leader>rem  :RExtractMethod<cr>
+Plug 'ecomba/vim-ruby-refactoring'
+
+" Improved incremental searching for Vim
+Plug 'haya14busa/incsearch.vim'
+
+" endplug
 call plug#end()
 
 syntax on
@@ -148,6 +165,11 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
+
+" Scrolling Behavoir
+set scrolloff=5       " Keep the cursor 5 lines from the top and bottom
+set sidescrolloff=5   " Keep the cursor 5 lines from the left
+set sidescroll=1
 
 " pretty folding with indentations
 " folding using:
@@ -181,12 +203,22 @@ set ruler
 set nostartofline
 
 " refresh every unchanded file
-set autoread
+setl autoread
+
+" Show matches while typing
 set incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
 set showmatch
 set ignorecase
 set smartcase
+
+" highlight all search matches
 set hlsearch
+hi Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE
+
 set backspace=indent,eol,start
 
 set lazyredraw
@@ -249,6 +281,11 @@ let g:syntastic_quiet_messages = {
 let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore ".git" --ignore "doc" --ignore "app/assets/images" --ignore "public" -g ""'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\|data\|log\|features$\|grouper$\|code-lists$\|tmp$',
+  \ 'file': '\.exe$\|\.so$\|\.dat$'
+\ }
+
 let mapleader="\<Space>"
 " set local working directory: neared ancestor that contains .git and the
 " directoy of the current file
@@ -260,6 +297,9 @@ let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
 " javascript plugin
 let g:javascript_plugin_jsdoc = 1
+
+" disable default mappings of danchoi/ri.vim
+let g:ri_no_mappings=1
 
 "MAPPINGS
 " toggle nerd tree
@@ -319,22 +359,52 @@ noremap <Leader>0 :vs<CR>:Eview. <CR>
 " select text block and then press //
 vnoremap // y/<C-R>"<CR>
 
+" Unbind mappings
+noremap r <NOP>
+
+" horizontal split
+nnoremap  <Leader>R :call ri#OpenSearchPrompt(0)<CR>
+" keyword lookup
+nnoremap  <Leader>RK :call ri#LookupNameUnderCursor()<CR> 
+
+" Search file
+noremap <leader>s :%s/
+" Subvert
+noremap <leader>S :%Subvert/
+
+" Search globally
+noremap <leader>a :Ag!<space>
+
+" Shell commands
+noremap <leader>, :!
+
+" delete nested blocks
+noremap <Leader>nd :normal! [{mm%d'm}]<CR>
+
+" start autogroups
 augroup testgroup
-" Clears autogroup if there is another testgroup
-autocmd!
-" Set persistent syntax highlighting for a given filetype.
-autocmd BufNewFile,BufRead *.fml set syntax=javascript
 
-" Do not display DOS line-endings ^M (Windows)
-autocmd BufNew,BufEnter,BufRead,WinEnter *.fml match Ignore /\r$/
+  " Clears autogroup if there is another testgroup
+  autocmd!
+  " Set persistent syntax highlighting for a given filetype.
+  autocmd BufNewFile,BufRead *.fml set syntax=javascript
+
+  " Do not display DOS line-endings ^M (Windows)
+  autocmd BufNew,BufEnter,BufRead,WinEnter *.fml match Ignore /\r$/
 
 
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+  " Enable autocomplete for ruby files
+  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 augroup END
 
@@ -506,7 +576,7 @@ function! WatchForChanges(bufname, ...)
 endfunction
 
 let autoreadargs={'autoread':1} 
-execute WatchForChanges("*",autoreadargs)
+silent! execute WatchForChanges("*",autoreadargs)
 
 
 "*************************************************************************"
