@@ -143,6 +143,7 @@ Plug 'ecomba/vim-ruby-refactoring'
 " Improved incremental searching for Vim
 Plug 'haya14busa/incsearch.vim'
 
+
 " endplug
 call plug#end()
 
@@ -267,6 +268,11 @@ set splitright
 " dialogue asking if you wish to save changed files.
 set confirm
 
+" opening a new file when the current buffer has unsaved 
+" changes causes files to be hidden instead of closed
+" Unsaved changes can still be accessed by typing :ls and then :b[N]
+set hidden
+
 " Move visual selections: prefixed by ctrl
 " <C-k>   Move current line/selections up
 " <C-j>   Move current line/selections down
@@ -306,6 +312,10 @@ let g:javascript_plugin_jsdoc = 1
 
 " disable default mappings of danchoi/ri.vim
 let g:ri_no_mappings=1
+
+" Autocompletion Ctrl-X Ctrl-U
+" vim's omni code completion instead
+let g:EclimCompletionMethod = 'omnifunc'
 
 "MAPPINGS
 " toggle nerd tree
@@ -387,6 +397,15 @@ noremap <leader>, :!
 " delete nested blocks
 noremap <Leader>nd :normal! [{mm%d'm}]<CR>
 
+" Import the class under the cursor with <leader>i (:h mapleader):
+nnoremap <silent> <buffer> <leader>ji :JavaImport<cr>
+
+" Search for the javadocs of the element under the cursor with <leader>d.
+nnoremap <silent> <buffer> <leader>jd :JavaDocSearch -x declarations<cr>
+
+" Perform a context sensitive search of the element under the cursor with <enter>.
+nnoremap <silent> <buffer> <leader><cr> :JavaSearchContext<cr>
+
 " start autogroups
 augroup testgroup
 
@@ -411,6 +430,8 @@ augroup testgroup
   autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
   autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
   autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+
+  au BufReadPost,BufNewFile *.java colorscheme monokai
 
 augroup END
 
