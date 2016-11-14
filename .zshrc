@@ -61,6 +61,7 @@ source ~/.bin/tmuxinator.zsh
 source ~/.custom_shell_scripts/transfer.sh
 source ~/.custom_shell_scripts/tran.sh
 export EDITOR='vim'
+export ECLIPSE_HOME='~/eclipse/'
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -94,6 +95,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias ag='command ag'
 alias gtags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
 alias ls='ls --color=auto'
+alias es='~/eclipse/eclimd'
 
 LS_COLORS='no=00;37:fi=00:di=00;33:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
 export LS_COLORS
