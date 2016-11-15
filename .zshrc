@@ -93,7 +93,7 @@ alias gs="git status"
 alias open="nautilus > /dev/null 2>&1"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias ag='command ag'
-alias gtags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
+alias gtags="ctags -R --c++-kinds=+p --fields=+liaS --extra=+q ."
 alias ls='ls --color=auto'
 alias es='~/eclipse/eclimd'
 
