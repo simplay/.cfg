@@ -60,8 +60,12 @@ source $ZSH/oh-my-zsh.sh
 source ~/.bin/tmuxinator.zsh
 source ~/.custom_shell_scripts/transfer.sh
 source ~/.custom_shell_scripts/tran.sh
+source ~/.custom_shell_scripts/ss.sh
+
 export EDITOR='vim'
 export ECLIPSE_HOME='~/eclipse/'
+export JRUBY_OPTS="--debug"
+
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
