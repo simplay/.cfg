@@ -143,6 +143,8 @@ Plug 'Valloric/YouCompleteMe'
 " Javascript autocompletion dependency
 Plug 'ternjs/tern_for_vim'
 
+" wrapper for running tests
+Plug 'janko-m/vim-test'
 
 " endplug
 call plug#end()
@@ -194,6 +196,13 @@ set noerrorbells
 
 set number
 set laststatus=2
+
+" lookup of ctags
+set tags=./tags,tags;
+set autochdir
+
+" determine correct loaded ruby version since we use rvm
+let g:ruby_path='/usr/bin/ruby'
 
 " Use system clipboard
 " is different for MacOSX and Ubuntu
@@ -305,9 +314,10 @@ let mapleader="\<Space>"
 " directoy of the current file
 let g:ctrlp_working_path_mode = 'ra'
 
-let g:UltiSnipsExpandTrigger='<c-x>'
-let g:UltiSnipsJumpForwardTrigger='<c-b>'
-let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+" Usage of snippets
+let g:UltiSnipsExpandTrigger='§'
+let g:UltiSnipsJumpForwardTrigger='§n'
+let g:UltiSnipsJumpBackwardTrigger='§p'
 
 " javascript plugin
 let g:javascript_plugin_jsdoc = 1
@@ -331,6 +341,10 @@ let g:tern_show_argument_hints='on_hold'
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_min_num_of_chars_for_completion = 0
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings  = 1
+
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
       \ 'qf' : 1,
@@ -341,13 +355,35 @@ let g:ycm_filetype_blacklist = {
       \ 'vimwiki' : 1,
       \ 'pandoc' : 1,
       \ 'infolog' : 1,
-      \ 'mail' : 1,
-      \ 'ruby' : 1
+      \ 'mail' : 1
       \}
+
+let g:ycm_semantic_triggers =  {
+  \   'c' : ['->', '.'],
+  \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+  \             're!\[.*\]\s'],
+  \   'ocaml' : ['.', '#'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::'],
+  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+  \   'ruby' : ['.', '::'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \ }
+
+" determine correct loaded ruby version since we use rvm
+let g:ruby_path='/usr/bin/ruby'
 
 "MAPPINGS
 " toggle nerd tree
 noremap <C-n> :NERDTreeToggle<CR>
+
+" Disable arrow-keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 " Open vimrc file
 noremap <Leader>H :e $MYVIMRC <CR>
@@ -434,6 +470,23 @@ nnoremap <silent> <buffer> <leader>jd :JavaDocSearch -x declarations<cr>
 " Perform a context sensitive search of the element under the cursor with <enter>.
 nnoremap <silent> <buffer> <leader><cr> :JavaSearchContext<cr>
 
+" Generate a new ruby project:
+" TODO: Think about initially creating it when loading the file
+noremap <silent> <leader>nr :ProjectCreate ./ -n ruby <CR>
+
+" In a test file runs all tests in the current file, otherwise runs the last
+" file tests.
+nmap <silent> <leader>tf :TestFile<CR>
+
+" Runs the whole test suite
+nmap <silent> <leader>ts :TestSuite<CR>
+
+" Runs the last test.
+nmap <silent> <leader>tl :TestLast<CR>
+
+" Visits the test file from which you last run your tests
+nmap <silent> <leader>tv :TestVisit<CR>
+
 " start autogroups
 augroup testgroup
 
@@ -451,12 +504,16 @@ augroup testgroup
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
   " Enable autocomplete for ruby files
   autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
   autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
   autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+  autocmd Filetype * runtime! autoload/eclim/<amatch>/complete.vim
+      \ | let s:cfunc = 'eclim#'.expand('<amatch>').'#complete#CodeComplete'
+      \ | if exists('*'.s:cfunc) | let &l:omnifunc=s:cfunc | endif
 
   au BufReadPost,BufNewFile *.java colorscheme monokai
 
