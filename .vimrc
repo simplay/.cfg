@@ -474,18 +474,21 @@ nnoremap <silent> <buffer> <leader><cr> :JavaSearchContext<cr>
 " TODO: Think about initially creating it when loading the file
 noremap <silent> <leader>nr :ProjectCreate ./ -n ruby <CR>
 
+" 
+nnoremap <silent> <leader>tn :TestNearest<CR>
+
 " In a test file runs all tests in the current file, otherwise runs the last
 " file tests.
-nmap <silent> <leader>tf :TestFile<CR>
+nnoremap <silent> <leader>tf :TestFile<CR>
 
 " Runs the whole test suite
-nmap <silent> <leader>ts :TestSuite<CR>
+nnoremap <silent> <leader>ts :TestSuite<CR>
 
 " Runs the last test.
-nmap <silent> <leader>tl :TestLast<CR>
+nnoremap <silent> <leader>tl :TestLast<CR>
 
 " Visits the test file from which you last run your tests
-nmap <silent> <leader>tv :TestVisit<CR>
+nnoremap <silent> <leader>tv :TestVisit<CR>
 
 " start autogroups
 augroup testgroup
