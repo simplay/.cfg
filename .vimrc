@@ -27,6 +27,9 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 
+" colorscheme
+Plug 'dracula/vim'
+
 " file explorer
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
