@@ -503,6 +503,9 @@ nnoremap <silent> <leader>tl :TestLast<CR>
 " Visits the test file from which you last run your tests
 nnoremap <silent> <leader>tv :TestVisit<CR>
 
+" jump to definition in js files using tern
+noremap ü :TernDef <CR>
+
 " start autogroups
 augroup testgroup
 
