@@ -90,6 +90,9 @@ Plug 'tpope/vim-rails'
 " javascript syntax highligting and improved indentation
 Plug 'pangloss/vim-javascript'
 
+" Syntax for JavaScript libraries
+Plug 'othree/javascript-libraries-syntax.vim'
+
 " Haml, Sass, SCSS syntax files
 Plug 'tpope/vim-haml'
 
@@ -146,6 +149,9 @@ Plug 'Valloric/YouCompleteMe'
 " Javascript autocompletion dependency
 Plug 'ternjs/tern_for_vim'
 
+" Enhanced javascript syntax file for Vim
+Plug 'jelera/vim-javascript-syntax'
+
 " wrapper for running tests
 Plug 'janko-m/vim-test'
 
@@ -201,7 +207,11 @@ set number
 set laststatus=2
 
 " lookup of ctags
-set tags=./tags,tags;
+" With the following setting, Vim will search for the file named 'tags', starting with 
+" the directory of the current file and then going to the parent directory and then recursively 
+" to the directory one level above. In the current directory ("tags,./tags"), 
+" or in the directory of the current file ("./tags,tags").
+set tags=./tags;
 set autochdir
 
 " determine correct loaded ruby version since we use rvm
@@ -507,7 +517,14 @@ augroup testgroup
 
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
+  autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
+  autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 1
+  autocmd BufReadPre *.js let b:javascript_lib_use_prelude = 0
+  autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
+
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
@@ -515,7 +532,7 @@ augroup testgroup
   autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
   autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
   autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+  autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 
   autocmd Filetype * runtime! autoload/eclim/<amatch>/complete.vim
       \ | let s:cfunc = 'eclim#'.expand('<amatch>').'#complete#CodeComplete'
