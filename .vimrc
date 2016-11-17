@@ -506,6 +506,16 @@ nnoremap <silent> <leader>tv :TestVisit<CR>
 " jump to definition in js files using tern
 noremap ü :TernDef <CR>
 
+" toggle YCM autocomplete
+nnoremap <Leader>ycm :call YCMToggle()<cr>
+function! YCMToggle()
+    if g:ycm_auto_trigger
+        let g:ycm_auto_trigger = 0
+    else
+        let g:ycm_auto_trigger = 1
+    endif
+endfunction
+
 " start autogroups
 augroup testgroup
 
