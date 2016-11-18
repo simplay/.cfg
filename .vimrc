@@ -516,6 +516,10 @@ function! YCMToggle()
     endif
 endfunction
 
+" change paste a word: use case: have a word in buffer and want to replace
+" another word by current buffer's content.
+nmap <silent> cp "_cw<C-R>"<Esc>
+
 " start autogroups
 augroup testgroup
 
