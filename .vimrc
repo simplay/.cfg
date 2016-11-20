@@ -389,6 +389,11 @@ let g:ycm_semantic_triggers =  {
 let g:ruby_path='/usr/bin/ruby'
 
 "MAPPINGS
+
+" Presever forward jumping behavior <ctrl-i>
+" <tab> gets remapped by several plugins
+nnoremap ,i <C-I>
+
 " toggle nerd tree
 noremap <C-n> :NERDTreeToggle<CR>
 
