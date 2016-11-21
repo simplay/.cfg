@@ -13,8 +13,10 @@
 "
 " Manipulate splits
 " <C-w> = Make splits evenly sized
-" <C-W> R swap left-right splits
+" <C-w> R swap left-right splits
 " <C-w> o close all but this split
+" <C-w> | zoom current window
+" 
 " handy leader commands:
 "   A, S, s, K
 " handy control commands:
@@ -475,6 +477,10 @@ noremap <leader>a :Ag!<space>
 
 " Shell commands
 noremap <leader>, :!
+
+" Interpret and execute the current line as a shell command
+" and replace current line by output.
+noremap Q !!sh<CR>
 
 " delete nested blocks
 noremap <Leader>nd :normal! [{mm%d'm}]<CR>
