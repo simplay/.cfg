@@ -157,6 +157,14 @@ Plug 'jelera/vim-javascript-syntax'
 " wrapper for running tests
 Plug 'janko-m/vim-test'
 
+" alignment plugin
+" v<MOTION>ga<MODE><Pattern>
+" ga<MOTION><MODE><Pattern>
+" eg 
+" vipga=
+" gaip=
+Plug 'junegunn/vim-easy-align'
+
 " endplug
 call plug#end()
 
@@ -299,6 +307,8 @@ set hidden
 
 set tags=./tags;,tags;
 
+set cursorline!
+
 " Move visual selections: prefixed by ctrl
 " <C-k>   Move current line/selections up
 " <C-j>   Move current line/selections down
@@ -396,6 +406,9 @@ let g:ruby_path='/usr/bin/ruby'
 " <tab> gets remapped by several plugins
 nnoremap ,i <C-I>
 
+" clear the seach pattern and the corresponding matches
+noremap <Leader><Leader> :let @/ = ""<CR>
+
 " toggle nerd tree
 noremap <C-n> :NERDTreeToggle<CR>
 
@@ -422,22 +435,18 @@ nnoremap K :Ag! "<C-R><C-W>"<CR>
 
 " Search buffer
 noremap <Leader>p :CtrlPBuffer<CR>
+
 " " Browse Tags in current buffer
 noremap <Leader>t :CtrlPBufTag<CR>
+
 " " Browse Tags
 noremap <Leader>T :CtrlPTag<CR>
-" " Search models
-noremap <Leader>m :Emodel<space>"
 
 " Toggle tagbar
 nnoremap <F8> :TagbarToggle<CR>
 
 " Change color of visual mode highlighting
 hi Visual   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
-
-" Enable pretty line highlighting via <LEADER-c>
-hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
-nnoremap <Leader>c :set cursorline! <CR>
 
 " Clean file
 noremap <leader>C :%s/\s\+$// <CR>
@@ -454,10 +463,6 @@ noremap <leader>h :vertical resize -5<CR>
 noremap <Leader>8 :vs<CR>:Emodel. <CR>
 noremap <Leader>9 :vs<CR>:Econtroller. <CR>
 noremap <Leader>0 :vs<CR>:Eview. <CR>
-
-" search for visually selected text:
-" select text block and then press //
-vnoremap // y/<C-R>"<CR>
 
 " Unbind mappings
 noremap r <NOP>
@@ -481,9 +486,6 @@ noremap <leader>, :!
 " Interpret and execute the current line as a shell command
 " and replace current line by output.
 noremap Q !!sh<CR>
-
-" delete nested blocks
-noremap <Leader>nd :normal! [{mm%d'm}]<CR>
 
 " Import the class under the cursor with <leader>i (:h mapleader):
 nnoremap <silent> <buffer> <leader>ji :JavaImport<cr>
@@ -527,9 +529,40 @@ function! YCMToggle()
     endif
 endfunction
 
+" Damian Conway's Die Blinkënmatchen: highlight matches
+nnoremap <silent> n n:call HLNext(0.1)<cr>
+nnoremap <silent> N N:call HLNext(0.1)<cr>
+
+function! HLNext (blinktime)
+  let target_pat = '\c\%#'.@/
+  let ring = matchadd('ErrorMsg', target_pat, 101)
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  call matchdelete(ring)
+  redraw
+endfunction
+
 " change paste a word: use case: have a word in buffer and want to replace
 " another word by current buffer's content.
 nmap <silent> cp "_cw<C-R>"<Esc>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" Clear the highlighting of CursorLine: just hi clear CursorLine after any :colorscheme and set background= call
+hi clear CursorLine
+augroup CLClear
+    autocmd! ColorScheme * hi clear CursorLine
+augroup END
+
+" Set the highlighting of CursorLineNR if it is not set in your colorscheme:
+hi CursorLineNR cterm=bold
+augroup CLNRSet
+    autocmd! ColorScheme * hi CursorLineNR cterm=bold
+augroup END
 
 " start autogroups
 augroup testgroup
