@@ -83,6 +83,9 @@ export JRUBY_OPTS="--debug"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# %~   $PWD where $HOME is replaced by ~
+PROMPT='${ret_status} %{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.

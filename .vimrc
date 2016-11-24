@@ -288,8 +288,12 @@ set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
+
+" Set the vertical split character to  a space (there is a single space after '\ ')
+set fillchars+=vert:\ 
+" set fillchars+=stl:\ ,stlnc:\
+
 set termencoding=utf-8
 
 " Open new split panes to right and bottom
@@ -308,6 +312,10 @@ set hidden
 set tags=./tags;,tags;
 
 set cursorline!
+
+" Prettier autocmd colors c-x and ycm menu color
+hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=NONE gui=NONE
+hi PmenuSel ctermfg=NONE ctermbg=61 cterm=NONE guifg=NONE guibg=#44475a gui=NONE
 
 " Move visual selections: prefixed by ctrl
 " <C-k>   Move current line/selections up
@@ -338,6 +346,15 @@ let mapleader="\<Space>"
 " set local working directory: neared ancestor that contains .git and the
 " directoy of the current file
 let g:ctrlp_working_path_mode = 'ra'
+
+" Custom menu highligting
+let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
+function BrightHighlightOn()
+  hi CursorLine ctermfg=NONE ctermbg=61 cterm=NONE guifg=NONE guibg=NONE gui=NONE
+endfunction
+function BrightHighlightOff()
+  hi CursorLine ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
+endfunction
 
 " Usage of snippets
 let g:UltiSnipsExpandTrigger='§'
@@ -521,11 +538,14 @@ noremap ü :TernDef <CR>
 
 " toggle YCM autocomplete
 nnoremap <Leader>ycm :call YCMToggle()<cr>
+let g:ycm_auto_trigger = 0 " initially this trigger is disabled
 function! YCMToggle()
     if g:ycm_auto_trigger
         let g:ycm_auto_trigger = 0
+        echo "YCM disabled."
     else
         let g:ycm_auto_trigger = 1
+        echo "YCM enabled."
     endif
 endfunction
 
