@@ -165,6 +165,13 @@ Plug 'janko-m/vim-test'
 " gaip=
 Plug 'junegunn/vim-easy-align'
 
+" Markdown Vim Mode - Syntax highlighting, matching rules and mappings
+Plug 'plasticboy/vim-markdown'
+
+" Instant Markdown previews from VIm!
+" Requires `sudo npm -g install instant-markdown-d`
+Plug 'suan/vim-instant-markdown'
+
 " endplug
 call plug#end()
 
@@ -244,20 +251,21 @@ set nostartofline
 " refresh every unchanded file
 setl autoread
 
-" Show matches while typing
+" Find the next matches while typing
 set incsearch
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 set showmatch
-set ignorecase
-set smartcase
+set ignorecase " Ignore case when searching...
+set smartcase " ...unless we type a capital
 
 " highlight all search matches
 set hlsearch
 hi Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE
 
+" Allow to use the backspace key in insert mode
 set backspace=indent,eol,start
 
 set lazyredraw
@@ -265,6 +273,9 @@ set ttyfast
 
 " show filename in status bar
 set title
+
+set showcmd                     "Show incomplete cmds down the bottom
+set showmode                    "Show current mode down the bottom
 
 " Do not show vim welcome msg
 set shortmess=atI
@@ -275,9 +286,25 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" ignore files in control P
+
+" Completion menu
+set wildmode=list:longest
+"enable ctrl-n and ctrl-p to scroll thru matche
+set wildmenu  
+
+" ignore files in wildmode and control P
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
 
 " ubuntu required setup to enable powerline
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
@@ -426,6 +453,10 @@ nnoremap ,i <C-I>
 " clear the seach pattern and the corresponding matches
 noremap <Leader><Leader> :let @/ = ""<CR>
 
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
+
 " toggle nerd tree
 noremap <C-n> :NERDTreeToggle<CR>
 
@@ -571,6 +602,35 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Strip trailing white spaces: 
+" SOMETIMES WHITE SPACES ARE PART OF THE SEMANTICS!
+" by running :%s/\s\+$//e addressing the issues of
+" moving the cursor to the last match and resetting the last search term.
+fun! TrimWhitespace()
+  let l:save = winsaveview()
+  %s/\s\+$//e
+  call winrestview(l:save)
+endfun
+command! TrimWhitespace call TrimWhitespace()
+noremap <Leader>c :call TrimWhitespace()<CR>
+
+" highlight whitespaces,tabs in darkgreen
+highlight ExtraWhitespace ctermbg=22 guibg=NONE
+let g:isMatchingWhitespaces = 0
+fun! ToggleWhitespaceMatcher()
+  if g:isMatchingWhitespaces
+    let g:isMatchingWhitespaces = 0
+    highlight ExtraWhitespace ctermbg=NONE guibg=NONE
+    echo "Hiding Trailing Whitespaces"
+  else
+    let g:isMatchingWhitespaces = 1
+    highlight ExtraWhitespace ctermbg=22 guibg=NONE
+    match ExtraWhitespace /\s\+$/
+    echo "Indicating Trailing Whitespaces"
+  endif
+endfun
+noremap <Leader>hw :call ToggleWhitespaceMatcher()<CR>
 
 " Clear the highlighting of CursorLine: just hi clear CursorLine after any :colorscheme and set background= call
 hi clear CursorLine
