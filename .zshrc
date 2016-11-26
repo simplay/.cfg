@@ -97,7 +97,8 @@ PROMPT='${ret_status} %{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'
 #
 #
 alias gs="git status"
-alias open="nautilus > /dev/null 2>&1"
+#alias open="nautilus > /dev/null 2>&1"
+alias open="thunar >/dev/null 2>&1"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias ag='command ag'
 alias gtags="ctags -R --c++-kinds=+p --fields=+liaS --extra=+q ."
