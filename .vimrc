@@ -460,6 +460,14 @@ nnoremap P P=`]<C-o>
 " toggle nerd tree
 noremap <C-n> :NERDTreeToggle<CR>
 
+" Show hidden files, too
+let NERDTreeShowFiles=1
+let NERDTreeShowHidden=1
+
+" ignore 
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
+      \ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
+
 " Disable arrow-keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -632,6 +640,9 @@ fun! ToggleWhitespaceMatcher()
 endfun
 noremap <Leader>hw :call ToggleWhitespaceMatcher()<CR>
 
+" Sudo to write
+cnoremap w!! w !sudo tee % >/dev/null
+
 " Clear the highlighting of CursorLine: just hi clear CursorLine after any :colorscheme and set background= call
 hi clear CursorLine
 augroup CLClear
@@ -681,7 +692,21 @@ augroup testgroup
 
   au BufReadPost,BufNewFile *.java colorscheme monokai
 
+  autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+
 augroup END
+
+" Close all open buffers on entering a window if the only
+" buffer that's left is the NERDTree buffer
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
 
 
 "*************************************************************************"
