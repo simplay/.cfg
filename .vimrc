@@ -575,9 +575,12 @@ nnoremap <silent> <leader>tv :TestVisit<CR>
 " jump to definition in js files using tern
 noremap ü :TernDef <CR>
 
+" un/comment selection, current line
+noremap <Leader>, :TComment <CR>
+
 " toggle YCM autocomplete
 nnoremap <Leader>ycm :call YCMToggle()<cr>
-let g:ycm_auto_trigger = 0 " initially this trigger is disabled
+let g:ycm_auto_trigger = 1 " initially this trigger is disabled
 function! YCMToggle()
     if g:ycm_auto_trigger
         let g:ycm_auto_trigger = 0
