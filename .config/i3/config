@@ -202,7 +202,7 @@ bar {
 # Keybinding to lock the screen
 bindsym $mod+Shift+x exec i3lock --color 475263
 
-exec_always feh --bg-scale ~/Pictures/space.jpg
+exec_always feh --bg-scale ~/Pictures/background.jpg
 
 exec_always xrandr --output DVI-D-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off --output DVI-I-1 --off --output DVI-I-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-1 --off --output DP-0 --off
 
