@@ -7,6 +7,11 @@ export ZSH=/home/simplay/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="dracula"
 PATH=~/bin:$PATH
+
+# use git as the global CI editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

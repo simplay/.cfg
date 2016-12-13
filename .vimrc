@@ -414,6 +414,11 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings  = 1
 
+" key mappings used to select the first completion string
+let g:ycm_key_list_select_completion = ['<Down>']
+" mappings used to select the previous completion string
+let g:ycm_key_list_previous_completion = ['<Up>']
+
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
       \ 'qf' : 1,
