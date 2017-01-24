@@ -23,6 +23,9 @@
 " e,y F,B
 " handy general movements
 " #, %
+" when using vim within a tmux session, the following default
+" vim mappings have changed:
+"   increment a number: <c-a>a
 
 set nocompatible
 filetype off
