@@ -666,6 +666,22 @@ augroup CLNRSet
     autocmd! ColorScheme * hi CursorLineNR cterm=bold
 augroup END
 
+" CtrlP auto cache clearing.
+" TODO: Think about disabling caching in ctrlP and rely on git
+" ----------------------------------------------------------------------------
+function! SetupCtrlP()
+  if exists("g:loaded_ctrlp") && g:loaded_ctrlp
+    augroup CtrlPExtension
+      autocmd!
+      autocmd FocusGained  * CtrlPClearCache
+      autocmd BufWritePost * CtrlPClearCache
+    augroup END
+  endif
+endfunction
+if has("autocmd")
+  autocmd VimEnter * :call SetupCtrlP()
+endif
+
 " start autogroups
 augroup testgroup
 
