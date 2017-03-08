@@ -1,3 +1,5 @@
+" Snippets via paragraph
+" 
 " Stuff you could forget and will regret
 " r refresh NerdTree
 " R refresh NerdTree
@@ -174,6 +176,13 @@ Plug 'plasticboy/vim-markdown'
 " Instant Markdown previews from VIm!
 " Requires `sudo npm -g install instant-markdown-d`
 Plug 'suan/vim-instant-markdown'
+
+" HTML5 omnicomplete and syntax 
+Plug 'othree/html5.vim'
+
+" Auto close (X)HTML tags 
+" Press write <table followed by a > to close the tag
+Plug 'alvan/vim-closetag'
 
 " endplug
 call plug#end()
