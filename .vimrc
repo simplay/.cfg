@@ -280,6 +280,9 @@ set smartcase " ...unless we type a capital
 set hlsearch
 hi Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE
 
+" Change color of visual mode highlighting
+hi Visual cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
+
 " Allow to use the backspace key in insert mode
 set backspace=indent,eol,start
 
@@ -500,13 +503,13 @@ nnoremap <tab> <c-w>w
 nnoremap <S-tab> <c-w>W
 
 " toggle git blame
-noremap <Leader>b :Gblame <CR>
+noremap <Leader>gb :Gblame <CR>
 
 " Search for word under cursor
 nnoremap K :Ag! "<C-R><C-W>"<CR>
 
 " Search buffer
-noremap <Leader>p :CtrlPBuffer<CR>
+noremap <Leader>b :CtrlPBuffer<CR>
 
 " " Browse Tags in current buffer
 noremap <Leader>t :CtrlPBufTag<CR>
@@ -516,12 +519,6 @@ noremap <Leader>T :CtrlPTag<CR>
 
 " Toggle tagbar
 nnoremap <F8> :TagbarToggle<CR>
-
-" Change color of visual mode highlighting
-hi Visual   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
-
-" Clean file
-noremap <leader>C :%s/\s\+$// <CR>
 
 " leave insert mode by pressing jj
 inoremap jj <Esc>
@@ -553,7 +550,7 @@ noremap <leader>S :%Subvert/
 noremap <leader>a :Ag!<space>
 
 " Shell commands
-noremap <leader>, :!
+noremap <leader>! :!
 
 " Interpret and execute the current line as a shell command
 " and replace current line by output.
@@ -657,7 +654,7 @@ fun! ToggleWhitespaceMatcher()
     echo "Indicating Trailing Whitespaces"
   endif
 endfun
-noremap <Leader>hw :call ToggleWhitespaceMatcher()<CR>
+noremap <Leader>sw :call ToggleWhitespaceMatcher()<CR>
 
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
@@ -926,5 +923,4 @@ if has('nvim')
   nnoremap <A-k> <C-w>k
   nnoremap <A-l> <C-w>l
 endif
-
 
