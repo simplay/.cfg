@@ -46,7 +46,7 @@ Plug 'tpope/vim-sensible'
 " syntax checking plugin
 Plug 'scrooloose/syntastic'
 
-" Enahnce statusline/tabls in vim
+" Enahnce statusline/tabs in vim
 Plug 'vim-airline/vim-airline'
 
 " git wrapper
@@ -189,9 +189,7 @@ call plug#end()
 
 syntax on
 filetype plugin indent on    " required
-set t_Co=256
 colorscheme dracula
-
 
 " No backups
 set noswapfile
@@ -203,6 +201,11 @@ set termencoding=utf-8
 set encoding=utf-8
 set fileencoding=utf-8
 set fileformats=unix
+
+"Set terminal color pref
+set t_Co=256
+set term=xterm-256color
+set guifont=Inconsolata\ for\ Powerline:h15
 
 " Smart indentation
 set autoindent
@@ -298,7 +301,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-
 " Completion menu
 set wildmode=list:longest
 "enable ctrl-n and ctrl-p to scroll thru matche
@@ -319,21 +321,15 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
 " ubuntu required setup to enable powerline
+" TODO make this more generic
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-set t_Co=256
 
 " powerline setup to have nice airline fonts
-set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
-set encoding=utf-8
-set t_Co=256
-set term=xterm-256color
 
 " Set the vertical split character to  a space (there is a single space after '\ ')
 set fillchars+=vert:\ 
 " set fillchars+=stl:\ ,stlnc:\
-
-set termencoding=utf-8
 
 " Open new split panes to right and bottom
 set splitbelow
@@ -348,8 +344,11 @@ set confirm
 " Unsaved changes can still be accessed by typing :ls and then :b[N]
 set hidden
 
+" specify where and how to lookup for tag files
 set tags=./tags;,tags;
 
+" highlight the current line in every window and update the highlight as
+" the cursor moves. 
 set cursorline!
 
 " Prettier autocmd colors c-x and ycm menu color
