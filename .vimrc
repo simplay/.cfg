@@ -184,6 +184,9 @@ Plug 'othree/html5.vim'
 " Press write <table followed by a > to close the tag
 Plug 'alvan/vim-closetag'
 
+" Allow to repeat plugin commands using `.`
+Plug 'tpope/vim-repeat'
+
 " endplug
 call plug#end()
 
@@ -923,4 +926,3 @@ if has('nvim')
   nnoremap <A-k> <C-w>k
   nnoremap <A-l> <C-w>l
 endif
-
