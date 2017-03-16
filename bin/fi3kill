@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+xwininfo | sed -n 6,6p | awk '{print $4}' | xargs xkill -id
