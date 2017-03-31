@@ -549,6 +549,12 @@ noremap <leader>s :%s/
 " Subvert
 noremap <leader>S :%Subvert/
 
+" Refactor (Substitude Globally) occurences in project scope
+" But First search for matches in files via ag: :Ag pattern
+" additionally append flags i or c
+" Run :cdo update afterwards
+noremap <leader>sg :cdo %s/pattern/replace/ge
+
 " Search globally
 noremap <leader>a :Ag!<space>
 
