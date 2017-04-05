@@ -225,8 +225,37 @@ exec --no-startup-id compton -f
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Control Front Lineline via keyboard
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%-
-bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
+# bindsym XF87AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
+# bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%-
+#bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+bindsym Print exec scrot -e 'mv $f ~/Pictures/screenshots/'
+bindsym F13 exec scrot -e 'mv $f ~/Pictures/screenshots/'
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessU pexec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+ 
+# Brightness
+bindsym XF86MonBrightnessDown exec "sudo /home/simplay/bin/brightness.sh - 100"
+bindsym XF86MonBrightnessUp exec "sudo /home/simplay/bin/brightness.sh + 100"
+
+# Touchpad controls
+bindsym $mod+Shift+t exec ~/bin/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 exec_always xmodmap ~/.config/.xmodmap
+
+exec --no-startup-id nm-applet
