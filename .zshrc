@@ -11,6 +11,9 @@ export ZSH=/home/simplay/.oh-my-zsh
 ZSH_THEME="dracula"
 PATH=~/bin:$PATH
 
+
+source ~/.shell_secrets
+
 # use git as the global CI editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -69,10 +72,8 @@ autoload -U compinit && compinit
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-source ~/.bin/tmuxinator.zsh
 source ~/.custom_shell_scripts/transfer.sh
 source ~/.custom_shell_scripts/tran.sh
-source ~/.custom_shell_scripts/ss.sh
 
 export EDITOR='vim'
 export ECLIPSE_HOME='~/eclipse/'
@@ -115,10 +116,11 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias ag='command ag'
 alias gtags="ctags -R --c++-kinds=+p --fields=+liaS --extra=+q ."
 alias ls='ls --color=auto'
-alias es='~/eclipse/eclimd'
+alias ecm='cd eclipse && ./eclimd'
 # find files/directory in current PWD with given name
 alias f0="find . -maxdepth 1 -name "
 alias nautilus="nautilus --no-desktop >/dev/null 2>&1 &"
+alias mount_o="sudo mount -t cifs -o username=${AD_USER},password=${AD_PW},uid=1000,gid=1000,dir_mode=0700,file_mode=0600,nounix //dc2012/swissdrg$/ /mnt/swissdrg/"
 
 LS_COLORS='no=00;37:fi=00:di=00;33:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
 export LS_COLORS
