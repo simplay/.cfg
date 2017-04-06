@@ -64,7 +64,8 @@ export EDITOR="$VISUAL"
 # git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 # git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-plugins=(git zsh.completions zsh-autosuggestions zsh-syntax-highlighting)
+# git clone git@github.com:rathrio/punch-zsh-completion.git ~/.oh-my-zsh/custom/plugins/punch
+plugins=(git zsh.completions zsh-autosuggestions zsh-syntax-highlighting punch)
 autoload -U compinit && compinit
 # User configuration
 
@@ -121,6 +122,7 @@ alias ecm='cd eclipse && ./eclimd'
 alias f0="find . -maxdepth 1 -name "
 alias nautilus="nautilus --no-desktop >/dev/null 2>&1 &"
 alias mount_o="sudo mount -t cifs -o username=${AD_USER},password=${AD_PW},uid=1000,gid=1000,dir_mode=0700,file_mode=0600,nounix //dc2012/swissdrg$/ /mnt/swissdrg/"
+alias punch="/home/simplay/repos/punch/punch.rb"
 
 LS_COLORS='no=00;37:fi=00:di=00;33:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
 export LS_COLORS
