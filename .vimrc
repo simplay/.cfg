@@ -246,7 +246,7 @@ set laststatus=2
 " the directory of the current file and then going to the parent directory and then recursively 
 " to the directory one level above. In the current directory ("tags,./tags"), 
 " or in the directory of the current file ("./tags,tags").
-set tags=./tags;
+set tags=tags,./tags;
 set autochdir
 
 " determine correct loaded ruby version since we use rvm
@@ -549,6 +549,8 @@ noremap <leader>s :%s/
 " Subvert
 noremap <leader>S :%Subvert/
 
+noremap <leader>m :/\<STRING\>
+
 " Refactor (Substitude Globally) occurences in project scope
 " But First search for matches in files via ag: :Ag pattern
 " additionally append flags i or c
@@ -596,6 +598,9 @@ nnoremap <silent> <leader>tv :TestVisit<CR>
 
 " jump to definition in js files using tern
 noremap ü :TernDef <CR>
+
+"Jump to ctag definition
+noremap <c-t> <c-]>
 
 " un/comment selection, current line
 noremap <Leader>, :TComment <CR>
