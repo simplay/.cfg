@@ -1,0 +1,34 @@
+#!/bin/bash
+#Created by Brian Winkler
+#Licensed under the GPL
+#See more scripts at https://github.com/BrighBrigh/i3Blocks
+#And check out my Linux blog at https://nuxview.blogspot.com/
+
+
+##Check PPTP status
+##Edit this file to show a unique output for when you have PPTP tunneling turned on
+##Change "ppp0" in both places to fit your needs
+GET_PPTP=$(ip addr show | grep pp0 | cut -d ' ' -f2 | cut -d ':' -f1)
+
+##Store status in STATUS
+if [[ $GET_PPTP == *"ppp0"* ]]
+then   
+STATUS=ON
+else
+STATUS=OFF
+fi
+
+
+#Print status
+echo $STATUS
+echo $STATUS
+
+
+
+##Colors
+if [[ "$STATUS" == "ON" ]]
+then
+echo "#00ff00"
+else
+echo "#ff0000"
+fi

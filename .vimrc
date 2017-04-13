@@ -110,6 +110,8 @@ Plug 'Yggdroot/indentLine'
 " browse the tags of a file and get an overview of its structure
 Plug 'majutsushi/tagbar'
 
+Plug 'chase/vim-ansible-yaml'
+
 " search and navigate Ruby library and gem documentation inside Vim
 " controlls: <Leader>r toggle horizontal search bar
 " requires a preliminarly run: `rvm docs generate-ri`
@@ -654,7 +656,11 @@ command! TrimWhitespace call TrimWhitespace()
 noremap <Leader>c :call TrimWhitespace()<CR>
 
 " highlight whitespaces,tabs in darkgreen
+" Indicate whitespaces per default
+let g:isMatchingWhitespaces = 1
 highlight ExtraWhitespace ctermbg=22 guibg=NONE
+match ExtraWhitespace /\s\+$/
+
 let g:isMatchingWhitespaces = 0
 fun! ToggleWhitespaceMatcher()
   if g:isMatchingWhitespaces
