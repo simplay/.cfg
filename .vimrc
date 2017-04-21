@@ -1,15 +1,15 @@
 " Snippets via paragraph
-" 
+"
 " Stuff you could forget and will regret
 " r refresh NerdTree
 " R refresh NerdTree
 " Normal mode <Leader>__ toggle comment current line
-" Visual mode: 
+" Visual mode:
 " comment/uncomment: selection + gc
 " surround selection by pattern
 "   :s/.*/"&" will surround visual selection by \" \"
 " Within a rails app, use gf to lookup file
-" Surround <V>S<PATTERN> 
+" Surround <V>S<PATTERN>
 " alternative: ciw<PATTERN><ESC>P
 " find all occurrances of word at cursor position: * (*|#)
 "
@@ -18,7 +18,7 @@
 " <C-w> R swap left-right splits
 " <C-w> o close all but this split
 " <C-w> | zoom current window
-" 
+"
 " handy leader commands:
 "   A, S, s, K
 " handy control commands:
@@ -55,7 +55,7 @@ Plug 'tpope/vim-fugitive'
 " fuzzy finder
 Plug 'kien/ctrlp.vim'
 
-" replace surroundings with another: 
+" replace surroundings with another:
 "  Press cs*' inside' *Hello world!* to change it to 'Hello world!'
 Plug 'tpope/vim-surround'
 
@@ -167,7 +167,7 @@ Plug 'janko-m/vim-test'
 " alignment plugin
 " v<MOTION>ga<MODE><Pattern>
 " ga<MOTION><MODE><Pattern>
-" eg 
+" eg
 " vipga=
 " gaip=
 Plug 'junegunn/vim-easy-align'
@@ -179,10 +179,10 @@ Plug 'plasticboy/vim-markdown'
 " Requires `sudo npm -g install instant-markdown-d`
 Plug 'suan/vim-instant-markdown'
 
-" HTML5 omnicomplete and syntax 
+" HTML5 omnicomplete and syntax
 Plug 'othree/html5.vim'
 
-" Auto close (X)HTML tags 
+" Auto close (X)HTML tags
 " Press write <table followed by a > to close the tag
 Plug 'alvan/vim-closetag'
 
@@ -244,9 +244,9 @@ set number
 set laststatus=2
 
 " lookup of ctags
-" With the following setting, Vim will search for the file named 'tags', starting with 
-" the directory of the current file and then going to the parent directory and then recursively 
-" to the directory one level above. In the current directory ("tags,./tags"), 
+" With the following setting, Vim will search for the file named 'tags', starting with
+" the directory of the current file and then going to the parent directory and then recursively
+" to the directory one level above. In the current directory ("tags,./tags"),
 " or in the directory of the current file ("./tags,tags").
 set tags=tags,./tags;
 set autochdir
@@ -312,7 +312,7 @@ set statusline+=%*
 " Completion menu
 set wildmode=list:longest
 "enable ctrl-n and ctrl-p to scroll thru matche
-set wildmenu  
+set wildmenu
 
 " ignore files in wildmode and control P
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
@@ -347,7 +347,7 @@ set splitright
 " dialogue asking if you wish to save changed files.
 set confirm
 
-" opening a new file when the current buffer has unsaved 
+" opening a new file when the current buffer has unsaved
 " changes causes files to be hidden instead of closed
 " Unsaved changes can still be accessed by typing :ls and then :b[N]
 set hidden
@@ -356,7 +356,7 @@ set hidden
 set tags=./tags;,tags;
 
 " highlight the current line in every window and update the highlight as
-" the cursor moves. 
+" the cursor moves.
 set cursorline!
 
 " Prettier autocmd colors c-x and ycm menu color
@@ -418,7 +418,7 @@ let g:ri_no_mappings=1
 let g:EclimCompletionMethod = 'omnifunc'
 
 " enable tern keyboard shortcuts
-" See help tern 
+" See help tern
 let g:tern_map_keys=1
 
 " show type argument hint of js when cursor is left over a function
@@ -488,7 +488,7 @@ noremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowFiles=1
 let NERDTreeShowHidden=1
 
-" ignore 
+" ignore
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
       \ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
 
@@ -510,11 +510,14 @@ nnoremap <S-tab> <c-w>W
 " toggle git blame
 noremap <Leader>gb :Gblame <CR>
 
-" Search for word under cursor
-nnoremap K :Ag! "<C-R><C-W>"<CR>
-
 " Search buffer
 noremap <Leader>b :CtrlPBuffer<CR>
+
+" Search for word under cursor
+nnoremap <Leader>k :Ag! -Q <C-r>=expand('<cword>')<CR><CR>
+
+"Jump to ctag definition
+nnoremap <c-t> <c-]>
 
 " " Browse Tags in current buffer
 noremap <Leader>t :CtrlPBufTag<CR>
@@ -544,7 +547,7 @@ noremap r <NOP>
 " horizontal split
 nnoremap  <Leader>R :call ri#OpenSearchPrompt(0)<CR>
 " keyword lookup
-nnoremap  <Leader>RK :call ri#LookupNameUnderCursor()<CR> 
+nnoremap  <Leader>RK :call ri#LookupNameUnderCursor()<CR>
 
 " Search file
 noremap <leader>s :%s/
@@ -558,9 +561,6 @@ noremap <leader>m :/\<STRING\>
 " additionally append flags i or c
 " Run :cdo update afterwards
 noremap <leader>sg :cdo %s/pattern/replace/ge
-
-" Search globally
-noremap <leader>a :Ag!<space>
 
 " Shell commands
 noremap <leader>! :!
@@ -582,7 +582,7 @@ nnoremap <silent> <buffer> <leader><cr> :JavaSearchContext<cr>
 " TODO: Think about initially creating it when loading the file
 noremap <silent> <leader>nr :ProjectCreate ./ -n ruby <CR>
 
-" 
+"
 nnoremap <silent> <leader>tn :TestNearest<CR>
 
 " In a test file runs all tests in the current file, otherwise runs the last
@@ -600,9 +600,6 @@ nnoremap <silent> <leader>tv :TestVisit<CR>
 
 " jump to definition in js files using tern
 noremap ü :TernDef <CR>
-
-"Jump to ctag definition
-noremap <c-t> <c-]>
 
 " un/comment selection, current line
 noremap <Leader>, :TComment <CR>
@@ -643,7 +640,7 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Strip trailing white spaces: 
+" Strip trailing white spaces:
 " SOMETIMES WHITE SPACES ARE PART OF THE SEMANTICS!
 " by running :%s/\s\+$//e addressing the issues of
 " moving the cursor to the last match and resetting the last search term.
@@ -927,7 +924,7 @@ function! WatchForChanges(bufname, ...)
   let @"=reg_saved
 endfunction
 
-let autoreadargs={'autoread':1} 
+let autoreadargs={'autoread':1}
 silent! execute WatchForChanges("*",autoreadargs)
 
 
