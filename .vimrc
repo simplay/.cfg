@@ -658,7 +658,7 @@ let g:isMatchingWhitespaces = 1
 highlight ExtraWhitespace ctermbg=22 guibg=NONE
 match ExtraWhitespace /\s\+$/
 
-let g:isMatchingWhitespaces = 0
+" let g:isMatchingWhitespaces = 0
 fun! ToggleWhitespaceMatcher()
   if g:isMatchingWhitespaces
     let g:isMatchingWhitespaces = 0
@@ -714,6 +714,8 @@ augroup testgroup
 
   " Do not display DOS line-endings ^M (Windows)
   autocmd BufNew,BufEnter,BufRead,WinEnter *.fml match Ignore /\r$/
+
+  " autocmd BufNew,BufEnter,BufRead,WinEnter *.fml match Ignore /\r$/
 
 
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
