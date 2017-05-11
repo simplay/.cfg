@@ -652,13 +652,15 @@ endfun
 command! TrimWhitespace call TrimWhitespace()
 noremap <Leader>c :call TrimWhitespace()<CR>
 
-" highlight whitespaces,tabs in darkgreen
 " Indicate whitespaces per default
 let g:isMatchingWhitespaces = 1
-highlight ExtraWhitespace ctermbg=22 guibg=NONE
-match ExtraWhitespace /\s\+$/
 
-" let g:isMatchingWhitespaces = 0
+" highlight whitespaces,tabs in darkgreen
+highlight ExtraWhitespace ctermbg=22 guibg=NONE
+augroup WhitespaceMatcher
+  autocmd BufWinEnter,BufNew,BufEnter,BufRead,WinEnter * match ExtraWhitespace /\s\+$/
+augroup END
+
 fun! ToggleWhitespaceMatcher()
   if g:isMatchingWhitespaces
     let g:isMatchingWhitespaces = 0
