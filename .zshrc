@@ -1,6 +1,6 @@
 # Installation
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-# 
+#
 # Path to your oh-my-zsh installation.
 export ZSH=/home/simplay/.oh-my-zsh
 
@@ -60,12 +60,12 @@ export EDITOR="$VISUAL"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# 
+#
 # git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 # git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # git clone git@github.com:rathrio/punch-zsh-completion.git ~/.oh-my-zsh/custom/plugins/punch
-plugins=(git zsh.completions zsh-autosuggestions zsh-syntax-highlighting punch)
+plugins=(git zsh.completions zsh-autosuggestions zsh-syntax-highlighting punch ssh-agent)
 autoload -U compinit && compinit
 # User configuration
 
