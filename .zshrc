@@ -18,6 +18,10 @@ source ~/.shell_secrets
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+ if [ $XDG_CURRENT_DESKTOP="i3" ]; then
+  XDG_CURRENT_DESKTOP="GNOME"
+ fi
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

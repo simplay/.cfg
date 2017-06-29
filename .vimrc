@@ -55,6 +55,9 @@ Plug 'tpope/vim-fugitive'
 " fuzzy finder
 Plug 'kien/ctrlp.vim'
 
+" For faster CtrlP matching
+Plug 'FelikZ/ctrlp-py-matcher'
+
 " replace surroundings with another:
 "  Press cs*' inside' *Hello world!* to change it to 'Hello world!'
 Plug 'tpope/vim-surround'
@@ -188,6 +191,9 @@ Plug 'alvan/vim-closetag'
 
 " Allow to repeat plugin commands using `.`
 Plug 'tpope/vim-repeat'
+
+" Slim syntax highlighting for vim.
+Plug 'slim-template/vim-slim'
 
 " endplug
 call plug#end()
@@ -392,6 +398,8 @@ let mapleader="\<Space>"
 " set local working directory: neared ancestor that contains .git and the
 " directoy of the current file
 let g:ctrlp_working_path_mode = 'ra'
+
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Custom menu highligting
 let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
