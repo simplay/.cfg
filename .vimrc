@@ -38,7 +38,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'dracula/vim'
 
 " file explorer
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " useful defaults: backspace, insearch, listchars, scrolloff, runtime! matchit
 Plug 'tpope/vim-sensible'
@@ -194,6 +194,17 @@ Plug 'tpope/vim-repeat'
 
 " Slim syntax highlighting for vim.
 Plug 'slim-template/vim-slim'
+
+Plug 'tfnico/vim-gradle'
+
+" asynchronous build and test dispatche
+Plug 'tpope/vim-dispatch'
+Plug 'OmniSharp/omnisharp-vim'
+
+Plug 'sotte/presenting.vim'
+Plug 'vim-scripts/SyntaxRange'
+Plug 'vim-scripts/ingo-library'
+Plug 'tpope/vim-markdown'
 
 " endplug
 call plug#end()
@@ -568,7 +579,9 @@ noremap <leader>m :/\<STRING\>
 " But First search for matches in files via ag: :Ag pattern
 " additionally append flags i or c
 " Run :cdo update afterwards
-noremap <leader>sg :cdo %s/pattern/replace/ge
+noremap <leader>sg :cdo %S/pattern/replace/ge
+
+noremap <leader>wm :match Ignore /\r$/<CR>
 
 " Shell commands
 noremap <leader>! :!
@@ -610,7 +623,7 @@ nnoremap <silent> <leader>tv :TestVisit<CR>
 noremap ü :TernDef <CR>
 
 " un/comment selection, current line
-noremap <Leader>, :TComment <CR>
+noremap <Leader>- :TComment <CR>
 
 " toggle YCM autocomplete
 nnoremap <Leader>ycm :call YCMToggle()<cr>

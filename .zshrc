@@ -11,16 +11,15 @@ export ZSH=/home/simplay/.oh-my-zsh
 ZSH_THEME="dracula"
 PATH=~/bin:$PATH
 
-
 source ~/.shell_secrets
 
 # use git as the global CI editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
- if [ $XDG_CURRENT_DESKTOP="i3" ]; then
+if [ $XDG_CURRENT_DESKTOP="i3" ]; then
   XDG_CURRENT_DESKTOP="GNOME"
- fi
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -79,10 +78,13 @@ autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 source ~/.custom_shell_scripts/transfer.sh
 source ~/.custom_shell_scripts/tran.sh
+export PATH=/~/bin/:$PATH
 
 export EDITOR='vim'
 export ECLIPSE_HOME='~/eclipse/'
 export JRUBY_OPTS="--debug"
+
+echo "\nfpath=($HOME/.zsh/gradle-completion \$fpath)" >> ~/.zshrc
 
 
 # You may need to manually set your language environment
@@ -136,3 +138,27 @@ alias lm="ruby ~/repos/lazyman/lazyman.rb"
 LS_COLORS='no=00;37:fi=00:di=00;33:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
 export LS_COLORS
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
+
+fpath=(/home/simplay/.zsh/gradle-completion $fpath)
