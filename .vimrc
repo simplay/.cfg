@@ -199,7 +199,9 @@ Plug 'tfnico/vim-gradle'
 
 " asynchronous build and test dispatche
 Plug 'tpope/vim-dispatch'
-Plug 'OmniSharp/omnisharp-vim'
+
+" could this cause the slowdown?
+" Plug 'OmniSharp/omnisharp-vim'
 
 Plug 'sotte/presenting.vim'
 Plug 'vim-scripts/SyntaxRange'
