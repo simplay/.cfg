@@ -8,3 +8,5 @@
 	tool = vimdiff
 [diff]
 [alias]
+  pushf = push --force-with-lease
+  pullf = pull -f --rebase

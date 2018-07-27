@@ -1,0 +1,8 @@
+pane	0	0	:exe/print-manual	1	:*	0	:/home/simplay/repos/manual_printer/lib/manual_printer/storages	1	vim	:-zsh
+vim
+pane	0	0	:exe/print-manual	1	:*	1	:/home/simplay/repos/manual_printer	0	ruby	:-zsh
+ruby exe/print-manual -s test/fixtures/tarpsy2 --print-tarpsy --footer-text Tarpsy fus ro da
+pane	0	1	:..anual_printer	0	:-	0	:/home/simplay/repos/manual_printer	1	zsh	:-zsh
+window	0	0	1	:*	3c60,319x91,0,0{209x91,0,0,3,109x91,210,0,0}
+window	0	1	0	:-	b85f,255x71,0,0,2
+state	0	

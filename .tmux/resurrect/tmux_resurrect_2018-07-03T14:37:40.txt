@@ -1,0 +1,14 @@
+pane	0	0	:..anual_printer	0	:-	0	:/home/simplay/repos/manual_printer	0	zsh	:-zsh
+pane	0	0	:..anual_printer	0	:-	1	:/home/simplay/repos/manual_printer	1	zsh	:-zsh
+pane	0	1	:..pos/workspace	1	:*	0	:/home/simplay/repos/workspace/app/seeders	0	vim	:-zsh
+vim
+pane	0	1	:..pos/workspace	1	:*	1	:/home/simplay/repos/workspace	1	zsh	:-zsh
+pane	0	1	:..pos/workspace	1	:*	2	:/home/simplay/repos/workspace	0	zsh	:-zsh
+pane	0	2	:ruby	0	:	0	:/home/simplay/playground	0	vim	:-zsh
+vim app.rb
+pane	0	2	:ruby	0	:	1	:/home/simplay/playground	1	ruby	:ruby app.rb
+-zsh
+window	0	0	0	:-	cfa7,319x91,0,0{159x91,0,0,0,159x91,160,0,5}
+window	0	1	1	:*	8ef7,319x91,0,0{179x91,0,0,1,139x91,180,0[139x45,180,0,2,139x45,180,46,3]}
+window	0	2	0	:	3edf,319x91,0,0[319x35,0,0,6,319x55,0,36,7]
+state	0	

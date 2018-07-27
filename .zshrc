@@ -71,8 +71,9 @@ fi
 
 # echo "\nfpath=($HOME/.zsh/gradle-completion \$fpath)" >> ~/.zshrc
 
-plugins=(git zsh.completions zsh-autosuggestions zsh-syntax-highlighting punch ssh-agent gradle-completion)
+plugins=(git zsh.completions zsh-autosuggestions zsh-syntax-highlighting punch ssh-agent gradle-completion rails)
 autoload -U compinit && compinit
+
 # User configuration
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
@@ -81,6 +82,8 @@ autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 source ~/.custom_shell_scripts/transfer.sh
 source ~/.custom_shell_scripts/tran.sh
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 export PATH=/~/bin/:$PATH
 
 export EDITOR='vim'
@@ -106,7 +109,13 @@ export JRUBY_OPTS="--debug"
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # %~   $PWD where $HOME is replaced by ~
+autoload -U promptinit; promptinit
+
 PROMPT='${ret_status} %{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'
+PROMPT=''
+prompt pure
+
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -133,10 +142,13 @@ alias mount_o="sudo mount -t cifs -o username=${AD_USER},password=${AD_PW},uid=1
 alias punch="/home/simplay/repos/punch/punch.rb"
 alias restart_wifi="sudo service network-manager restart; sleep 3; sudo service network-manager restart"
 alias mapr="cd ~/repos/manual_printer"
+alias mapi="cd ~/repos/workspace"
+alias nedali="cd ~/repos/nedali"
 
 # shortcuts
 alias gopm="cd ~/repos/manual_printer/"
 alias lm="ruby ~/repos/lazyman/lazyman.rb"
+alias vpn="sudo openvpn /etc/openvpn/client.ovpn"
 
 LS_COLORS='no=00;37:fi=00:di=00;33:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
 export LS_COLORS

@@ -1,0 +1,13 @@
+pane	0	0	:rails	1	:*	0	:/home/simplay/repos/nedali/app/models	0	vim	:-zsh
+vim
+pane	0	0	:rails	1	:*	1	:/home/simplay/repos/nedali	1	puma	:-zsh
+puma 3.11.4 (tcp://0.0.0.0:3000) [nedali]
+pane	0	0	:rails	1	:*	2	:/home/simplay/repos/nedali	0	zsh	:-zsh
+pane	0	1	:~/repos/nedali	0	:-	0	:/home/simplay/repos/nedali	0	redis-server	:-zsh
+redis-server *:6379
+pane	0	1	:~/repos/nedali	0	:-	1	:/home/simplay/repos/nedali	0	node	:-zsh
+node /home/simplay/repos/nedali/node_modules/.bin/webpack-dev-server --config /home/simplay/repos/nedali/config/webpack/development.js --progress --color
+pane	0	1	:~/repos/nedali	0	:-	2	:/home/simplay/repos/nedali	1	zsh	:-zsh
+window	0	0	1	:*	273f,319x91,0,0{159x91,0,0,0,159x91,160,0[159x45,160,0,1,159x45,160,46,3]}
+window	0	1	0	:-	2ee9,319x91,0,0[319x42,0,0,2,319x24,0,43,4,319x23,0,68,5]
+state	0	

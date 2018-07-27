@@ -43,8 +43,13 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " useful defaults: backspace, insearch, listchars, scrolloff, runtime! matchit
 Plug 'tpope/vim-sensible'
 
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'leafgarland/typescript-vim'
+Plug 'w0rp/ale'
+Plug 'prettier/vim-prettier', { 'do' : 'yarn install' }
+
 " syntax checking plugin
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 
 " Enahnce statusline/tabs in vim
 Plug 'vim-airline/vim-airline'
@@ -97,11 +102,6 @@ Plug 'rking/ag.vim'
 " :help rails-rake
 Plug 'tpope/vim-rails'
 
-" javascript syntax highligting and improved indentation
-Plug 'pangloss/vim-javascript'
-
-" Syntax for JavaScript libraries
-Plug 'othree/javascript-libraries-syntax.vim'
 
 " Haml, Sass, SCSS syntax files
 Plug 'tpope/vim-haml'
@@ -207,6 +207,15 @@ Plug 'sotte/presenting.vim'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'vim-scripts/ingo-library'
 Plug 'tpope/vim-markdown'
+
+Plug 'isRuslan/vim-es6'
+Plug 'mxw/vim-jsx'
+
+" javascript syntax highligting and improved indentation
+Plug 'pangloss/vim-javascript'
+
+" Syntax for JavaScript libraries
+Plug 'othree/javascript-libraries-syntax.vim'
 
 " endplug
 call plug#end()
@@ -325,7 +334,7 @@ set shortmess=atI
 " adapt statusline using syntastic and fugative (git)
 set statusline=%<%f\ %{fugitive#statusline()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " Completion menu
@@ -390,13 +399,14 @@ let g:move_key_modifier = 'C'
 let g:airline_powerline_fonts = 1
 
 " configure syntastic plugin
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_quiet_messages = {
-  \ "!level": "errors",
-  \ "type": "style" }
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_quiet_messages = {
+"   \ "!level": "errors",
+"   \ "type": "style" }
+" let g:syntastic_javascript_checkers = ['eslint']
 
 "Redefine finder via controlP: Use silversearcher (ag) and git
 let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore ".git" --ignore "doc" --ignore "app/assets/images" --ignore "public" -g ""'
@@ -453,6 +463,32 @@ let g:ycm_min_num_of_chars_for_completion = 0
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings  = 1
+
+" Disable ale by default
+" let g:ale_enabled = 0
+" Enable completion where available.
+let g:ale_completion_enabled = 0
+" Enable hover info and show it in ballons if possible.
+let b:ale_set_balloons = 1
+" Show the gutter at all times.
+let g:ale_sign_column_always = 1
+
+" Enable eslint autofix
+let g:ale_fixers = {
+\   'javascript': [
+\       'eslint'
+\   ],
+\   'typescript': [
+\       'tslint'
+\   ],
+\   'ruby': [
+\       'rubocop'
+\   ]
+\}
+
+let g:ale_linters = {
+\   'typescript': ['tslint', 'tsserver', 'typecheck'],
+\}
 
 " key mappings used to select the first completion string
 let g:ycm_key_list_select_completion = ['<Down>']
@@ -747,6 +783,8 @@ augroup testgroup
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+
   autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
   autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
   autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 1
@@ -761,6 +799,12 @@ augroup testgroup
   autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
   autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
   autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+  autocmd Filetype html setlocal ts=2 sts=2 sw=2
+  autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+
+  " Custom comment strings
+  autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
+  autocmd FileType typescript.jsx setlocal commentstring={/*\ %s\ */}
 
   autocmd Filetype * runtime! autoload/eclim/<amatch>/complete.vim
       \ | let s:cfunc = 'eclim#'.expand('<amatch>').'#complete#CodeComplete'
