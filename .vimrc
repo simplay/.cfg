@@ -316,6 +316,11 @@ hi Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE
 " Change color of visual mode highlighting
 hi Visual cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
 
+highlight link SyntasticError SpellBad
+highlight link SyntasticWarning SpellCap
+" more visual appealing checkstyle error coloring
+hi SpellCap ctermfg=195 ctermbg=161
+
 " Allow to use the backspace key in insert mode
 set backspace=indent,eol,start
 

@@ -89,8 +89,7 @@ export PATH=/~/bin/:$PATH
 export EDITOR='vim'
 export ECLIPSE_HOME='~/eclipse/'
 export JRUBY_OPTS="--debug"
-
-
+export GOPATH=$HOME/go
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -144,6 +143,7 @@ alias restart_wifi="sudo service network-manager restart; sleep 3; sudo service 
 alias mapr="cd ~/repos/manual_printer"
 alias mapi="cd ~/repos/workspace"
 alias nedali="cd ~/repos/nedali"
+alias ride="cd ~/repos/ride"
 
 # shortcuts
 alias gopm="cd ~/repos/manual_printer/"
