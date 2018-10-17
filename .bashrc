@@ -122,3 +122,5 @@ export JRUBY_OPTS="--debug"
 
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

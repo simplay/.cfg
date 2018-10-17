@@ -1,0 +1,30 @@
+pane	0	0	:vim	0	:	0	:/home/simplay/repos/ride	1	vim	:-zsh
+vim
+pane	0	1	:bundle	0	:	0	:/home/simplay/repos/ride	0	puma	:-zsh
+puma 3.11.2 (tcp://0.0.0.0:3000) [ride]
+pane	0	1	:bundle	0	:	1	:/home/simplay/repos/ride	0	node	:-zsh
+node /home/simplay/repos/ride/node_modules/.bin/webpack-dev-server --config /home/simplay/repos/ride/config/webpack/development.js --progress --color
+pane	0	1	:bundle	0	:	2	:/home/simplay/repos/ride	1	sidekiq	:-zsh
+sidekiq 5.1.3 ride [0 of 25 busy]
+pane	0	2	:bundle	0	:	0	:/home/simplay/repos/workspace	0	puma	:-zsh
+puma 3.11.4 (tcp://localhost:3001) [workspace]
+pane	0	2	:bundle	0	:	1	:/home/simplay/repos/workspace	1	sidekiq	:-zsh
+sidekiq 5.1.1 workspace [0 of 25 busy]
+pane	0	3	:..inter/exports	1	:*	0	:/home/simplay/repos/manual_printer	1	vim	:-zsh
+vim
+pane	0	3	:..inter/exports	1	:*	1	:/home/simplay/repos/manual_printer/exports	0	zsh	:-zsh
+pane	0	3	:..inter/exports	1	:*	2	:/home/simplay/repos/manual_printer	0	ruby	:-zsh
+ruby bin/console
+pane	0	3	:..inter/exports	1	:*	3	:/home/simplay/repos/manual_printer	0	zsh	:-zsh
+pane	0	4	:vim	0	:-	0	:/home/simplay/repos/workspace	1	vim	:vim
+-zsh
+pane	0	4	:vim	0	:-	1	:/home/simplay/repos/workspace/app/service	0	vim	:-zsh
+vim
+pane	0	5	:~/repos/ride	0	:	0	:/home/simplay/repos/ride	1	zsh	:-zsh
+window	0	0	0	:	b85d,255x71,0,0,0
+window	0	1	0	:	11f5,255x71,0,0[255x35,0,0,1,255x17,0,36,4,255x17,0,54,5]
+window	0	2	0	:	f34b,255x71,0,0[255x35,0,0,2,255x35,0,36,3]
+window	0	3	1	:*	19fd,319x94,0,0{189x94,0,0[189x46,0,0,12,189x47,0,47,19],129x94,190,0[129x47,190,0,6,129x46,190,48,16]}
+window	0	4	0	:-	7197,319x91,0,0[319x45,0,0,17,319x45,0,46,18]
+window	0	5	0	:	bd86,319x91,0,0,9
+state	0	

@@ -1,0 +1,12 @@
+pane	0	0	:exit	0	:-	0	:/home/simplay/repos/trage/lib/trage	1	vim	:vim
+-zsh
+pane	0	2	:~/repos/trage	1	:*	0	:/home/simplay/repos/trage	0	vim	:-zsh
+vim
+pane	0	2	:~/repos/trage	1	:*	1	:/home/simplay/repos/medcode/app/exporters	0	vim	:-zsh
+vim
+pane	0	2	:~/repos/trage	1	:*	2	:/home/simplay/repos/trage	1	ruby	:ruby bin/console
+-zsh
+pane	0	2	:~/repos/trage	1	:*	3	:/home/simplay/repos/trage	0	zsh	:-zsh
+window	0	0	0	:-	c97d,319x94,0,0,0
+window	0	2	1	:*	ab28,319x94,0,0[319x66,0,0{159x66,0,0,3,159x66,160,0,21},319x13,0,67,17,319x13,0,81,22]
+state	0	

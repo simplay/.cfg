@@ -1,0 +1,29 @@
+pane	0	0	:~	0	:	0	:/home/simplay	1	zsh	:-zsh
+pane	0	1	:..anual_printer	0	:	0	:/home/simplay/repos/manual_printer/lib/manual_printer/printers	0	vim	:vim
+-zsh
+pane	0	1	:..anual_printer	0	:	1	:/home/simplay/repos/manual_printer	0	zsh	:-zsh
+pane	0	1	:..anual_printer	0	:	2	:/home/simplay/repos/manual_printer	1	zsh	:-zsh
+pane	0	1	:..anual_printer	0	:	3	:/home/simplay/Documents/nils/final/TextChapters	0	vim	:-zsh
+vim
+pane	0	2	:~/repos/trage	0	:	0	:/home/simplay/repos/trage/lib/trage	0	vim	:-zsh
+vim
+pane	0	2	:~/repos/trage	0	:	1	:/home/simplay/repos/trage	1	zsh	:-zsh
+pane	0	3	:..anual_printer	0	:	0	:/home/simplay/repos/manual_printer	1	zsh	:-zsh
+pane	0	4	:..anual_printer	0	:	0	:/home/simplay/repos/manual_printer	1	zsh	:-zsh
+pane	0	5	:bundle	0	:-	0	:/home/simplay/repos/workspace/app/service	0	vim	:-zsh
+vim
+pane	0	5	:bundle	0	:-	1	:/home/simplay/repos/workspace	0	puma	:-zsh
+puma 3.11.4 (tcp://localhost:3001) [workspace]
+pane	0	5	:bundle	0	:-	2	:/home/simplay/repos/workspace	1	sidekiq	:-zsh
+sidekiq 5.1.1 workspace [0 of 25 busy]
+pane	0	6	:~/repos/ride	1	:*	0	:/home/simplay/repos/ride	0	puma	:-zsh
+puma 3.11.2 (tcp://0.0.0.0:3000) [ride]
+pane	0	6	:~/repos/ride	1	:*	1	:/home/simplay/repos/ride	1	zsh	:-zsh
+window	0	0	0	:	c97d,319x94,0,0,0
+window	0	1	0	:	45ba,319x91,0,0[319x55,0,0,1,319x35,0,56{160x35,0,56[160x17,0,56,2,160x17,0,74,7],158x35,161,56,5}]
+window	0	2	0	:	dd2b,319x94,0,0{159x94,0,0,3,159x94,160,0,4}
+window	0	3	0	:	c983,319x94,0,0,6
+window	0	4	0	:	bd85,319x91,0,0,8
+window	0	5	0	:-	e90a,319x91,0,0[319x65,0,0,9,319x25,0,66{159x25,0,66,10,159x25,160,66,11}]
+window	0	6	1	:*	f18f,319x91,0,0[319x45,0,0,12,319x45,0,46,13]
+state	0	

@@ -1,0 +1,6 @@
+pane	0	0	:	1	:*	0	:/home/simplay/repos/trage/test	0	vim	:-zsh
+vim
+pane	0	0	:	1	:*	1	:/home/simplay/repos/trage	1	rake	:-zsh
+/home/simplay/.gem/ruby/2.5.1/bin/rake
+window	0	0	1	:*	d815,319x91,0,0{179x91,0,0,0,139x91,180,0,1}
+state	0	

@@ -1,0 +1,6 @@
+pane	0	0	:exit	0	:-	0	:/home/simplay/repos/trage/lib/trage	1	vim	:vim
+-zsh
+pane	0	2	:~/repos/trage	1	:*	0	:/home/simplay/repos/trage	1	zsh	:-zsh
+window	0	0	0	:-	c97d,319x94,0,0,0
+window	0	2	1	:*	c980,319x94,0,0,3
+state	0	

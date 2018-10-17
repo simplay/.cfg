@@ -48,9 +48,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier', { 'do' : 'yarn install' }
 
-" syntax checking plugin
-" Plug 'scrooloose/syntastic'
-
 " Enahnce statusline/tabs in vim
 Plug 'vim-airline/vim-airline'
 
@@ -237,7 +234,12 @@ set fileformats=unix
 
 "Set terminal color pref
 set t_Co=256
-set term=xterm-256color
+
+if has("nvim")
+else
+  set term=xterm-256color
+endif
+
 set guifont=Inconsolata\ for\ Powerline:h15
 
 " Smart indentation
@@ -276,7 +278,6 @@ set laststatus=2
 " the directory of the current file and then going to the parent directory and then recursively
 " to the directory one level above. In the current directory ("tags,./tags"),
 " or in the directory of the current file ("./tags,tags").
-set tags=tags,./tags;
 set autochdir
 
 " determine correct loaded ruby version since we use rvm
@@ -316,8 +317,6 @@ hi Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE
 " Change color of visual mode highlighting
 hi Visual cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
 
-highlight link SyntasticError SpellBad
-highlight link SyntasticWarning SpellCap
 " more visual appealing checkstyle error coloring
 hi SpellCap ctermfg=195 ctermbg=161
 
@@ -336,10 +335,9 @@ set showmode                    "Show current mode down the bottom
 " Do not show vim welcome msg
 set shortmess=atI
 
-" adapt statusline using syntastic and fugative (git)
 set statusline=%<%f\ %{fugitive#statusline()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{gutentags#statusline()}
 set statusline+=%*
 
 " Completion menu
@@ -385,9 +383,6 @@ set confirm
 " Unsaved changes can still be accessed by typing :ls and then :b[N]
 set hidden
 
-" specify where and how to lookup for tag files
-set tags=./tags;,tags;
-
 " highlight the current line in every window and update the highlight as
 " the cursor moves.
 set cursorline!
@@ -402,16 +397,6 @@ hi PmenuSel ctermfg=NONE ctermbg=61 cterm=NONE guifg=NONE guibg=#44475a gui=NONE
 let g:move_key_modifier = 'C'
 
 let g:airline_powerline_fonts = 1
-
-" configure syntastic plugin
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_quiet_messages = {
-"   \ "!level": "errors",
-"   \ "type": "style" }
-" let g:syntastic_javascript_checkers = ['eslint']
 
 "Redefine finder via controlP: Use silversearcher (ag) and git
 let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore ".git" --ignore "doc" --ignore "app/assets/images" --ignore "public" -g ""'
@@ -442,6 +427,16 @@ endfunction
 let g:UltiSnipsExpandTrigger='§'
 let g:UltiSnipsJumpForwardTrigger='§n'
 let g:UltiSnipsJumpBackwardTrigger='§p'
+
+set tags=./.tags,.tags;
+
+let g:gutentags_ctags_tagfile = '.tags'
+let g:gutentags_file_list_command = {
+      \ 'markers': {
+      \ '.git': 'git ls-files',
+      \ },
+      \ }
+let g:gutentags_generate_on_new = 1
 
 " javascript plugin
 let g:javascript_plugin_jsdoc = 1
@@ -561,7 +556,7 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Open vimrc file
-noremap <Leader>H :e $MYVIMRC <CR>
+noremap <Leader>H :e ~/.vimrc <CR>
 
 " jump to tab on the right
 nnoremap <tab> <c-w>w
