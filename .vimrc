@@ -463,6 +463,7 @@ let g:ycm_min_num_of_chars_for_completion = 0
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings  = 1
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 " Disable ale by default
 " let g:ale_enabled = 0
@@ -488,6 +489,7 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
 \   'typescript': ['tslint', 'tsserver', 'typecheck'],
+\   'cpp': ['clang'],
 \}
 
 " key mappings used to select the first completion string
@@ -524,6 +526,10 @@ let g:ycm_semantic_triggers =  {
 
 " determine correct loaded ruby version since we use rvm
 let g:ruby_path='/usr/bin/ruby'
+
+" ":FormatJSON
+com! FormatJSON %!python -m json.tool
+nmap =j :%!python -m json.tool<CR>
 
 "MAPPINGS
 
