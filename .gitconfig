@@ -10,3 +10,4 @@
 [alias]
   pushf = push --force-with-lease
   pullf = pull -f --rebase
+  purge = !git branch --merged | grep -v '\\*' | xargs -n 1 git branch -D
