@@ -10,6 +10,7 @@ export ZSH=/home/simplay/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="dracula"
 PATH=~/bin:$PATH
+PATH=~/programs/pycharm-community-2018.3.1/bin:$PATH
 
 source ~/.shell_secrets
 
